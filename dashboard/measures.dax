@@ -1,0 +1,259 @@
+// Key Performance Indicators
+
+// Premium Metrics
+Total Premium = SUM(insurance_data[annual_premium])
+
+Premium YTD = 
+CALCULATE(
+    [Total Premium],
+    DATESYTD(insurance_data[policy_date])
+)
+
+Premium Growth = 
+DIVIDE(
+    [Total Premium] - [Premium YTD],
+    [Premium YTD],
+    0
+)
+
+// Claims Metrics
+Total Claims = SUM(insurance_data[claim_amount])
+
+Claims YTD = 
+CALCULATE(
+    [Total Claims],
+    DATESYTD(insurance_data[policy_date])
+)
+
+Claims Growth = 
+DIVIDE(
+    [Total Claims] - [Claims YTD],
+    [Claims YTD],
+    0
+)
+
+// Profitability Metrics
+Loss Ratio = 
+DIVIDE(
+    [Total Claims],
+    [Total Premium],
+    0
+)
+
+Profit = [Total Premium] - [Total Claims]
+
+Profit Margin = 
+DIVIDE(
+    [Profit],
+    [Total Premium],
+    0
+)
+
+// Customer Metrics
+Total Customers = DISTINCTCOUNT(insurance_data[customer_id])
+
+Active Customers = 
+CALCULATE(
+    [Total Customers],
+    insurance_data[policy_status] = "Active"
+)
+
+Customer Retention Rate = 
+DIVIDE(
+    CALCULATE(
+        [Total Customers],
+        insurance_data[policy_status] IN {"Active", "Renewed"}
+    ),
+    [Total Customers],
+    0
+)
+
+Average Premium per Customer = 
+DIVIDE(
+    [Total Premium],
+    [Total Customers],
+    0
+)
+
+// Fraud Metrics
+Total Fraud Cases = 
+CALCULATE(
+    [Total Customers],
+    insurance_data[fraud_reported] = 1
+)
+
+Fraud Rate = 
+DIVIDE(
+    [Total Fraud Cases],
+    [Total Customers],
+    0
+)
+
+Fraud Loss Amount = 
+CALCULATE(
+    [Total Claims],
+    insurance_data[fraud_reported] = 1
+)
+
+// Risk Metrics
+High Risk Customers = 
+CALCULATE(
+    [Total Customers],
+    insurance_data[customer_segment] IN {"High Risk", "Very High Risk"}
+)
+
+Risk Score = 
+DIVIDE(
+    [High Risk Customers],
+    [Total Customers],
+    0
+)
+
+// Time Intelligence
+Premium MTD = 
+CALCULATE(
+    [Total Premium],
+    DATESMTD(insurance_data[policy_date])
+)
+
+Claims MTD = 
+CALCULATE(
+    [Total Claims],
+    DATESMTD(insurance_data[policy_date])
+)
+
+Premium vs Previous Month = 
+VAR CurrentMonth = [Premium MTD]
+VAR PreviousMonth = 
+    CALCULATE(
+        [Total Premium],
+        DATEADD(insurance_data[policy_date], -1, MONTH)
+    )
+RETURN
+DIVIDE(
+    CurrentMonth - PreviousMonth,
+    PreviousMonth,
+    0
+)
+
+// Segment Analysis
+Premium by Segment = 
+CALCULATE(
+    [Total Premium],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[customer_segment]
+    )
+)
+
+Claims by Segment = 
+CALCULATE(
+    [Total Claims],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[customer_segment]
+    )
+)
+
+Segment Profit = [Premium by Segment] - [Claims by Segment]
+
+Segment Loss Ratio = 
+DIVIDE(
+    [Claims by Segment],
+    [Premium by Segment],
+    0
+)
+
+// Regional Analysis
+Premium by Region = 
+CALCULATE(
+    [Total Premium],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[region]
+    )
+)
+
+Claims by Region = 
+CALCULATE(
+    [Total Claims],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[region]
+    )
+)
+
+Region Profit = [Premium by Region] - [Claims by Region]
+
+Region Loss Ratio = 
+DIVIDE(
+    [Claims by Region],
+    [Premium by Region],
+    0
+)
+
+// Policy Analysis
+Policies by Type = 
+CALCULATE(
+    [Total Customers],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[policy_type]
+    )
+)
+
+Premium by Policy Type = 
+CALCULATE(
+    [Total Premium],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[policy_type]
+    )
+)
+
+Claims by Policy Type = 
+CALCULATE(
+    [Total Claims],
+    ALLEXCEPT(
+        insurance_data,
+        insurance_data[policy_type]
+    )
+)
+
+Policy Type Profit = [Premium by Policy Type] - [Claims by Policy Type]
+
+// Moving Averages
+Premium 3M Moving Avg = 
+AVERAGEX(
+    DATESINPERIOD(
+        insurance_data[policy_date],
+        LASTDATE(insurance_data[policy_date]),
+        -3,
+        MONTH
+    ),
+    [Total Premium]
+)
+
+Claims 3M Moving Avg = 
+AVERAGEX(
+    DATESINPERIOD(
+        insurance_data[policy_date],
+        LASTDATE(insurance_data[policy_date]),
+        -3,
+        MONTH
+    ),
+    [Total Claims]
+)
+
+// Ranking Metrics
+Customer Value Rank = 
+RANKX(
+    ALL(insurance_data[customer_id]),
+    [Premium by Customer]
+)
+
+Risk Level Rank = 
+RANKX(
+    ALL(insurance_data[customer_id]),
+    [Claims by Customer]
+) 

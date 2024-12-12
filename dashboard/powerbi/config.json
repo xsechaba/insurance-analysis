@@ -1,0 +1,61 @@
+{
+    "project": {
+        "name": "Insurance Analytics Dashboard",
+        "version": "1.0",
+        "author": "Your Name",
+        "lastUpdated": "2023-12-11"
+    },
+    "dataSource": {
+        "files": {
+            "main": "../data/processed/insurance_data.csv",
+            "customer": "../data/processed/customer_metrics.csv",
+            "region": "../data/processed/region_metrics.csv",
+            "time": "../data/processed/time_metrics.csv"
+        }
+    },
+    "relationships": [
+        {
+            "fromTable": "insurance_data",
+            "fromColumn": "policy_date",
+            "toTable": "time_metrics",
+            "toColumn": "date",
+            "type": "many-to-one"
+        },
+        {
+            "fromTable": "insurance_data",
+            "fromColumn": "customer_segment",
+            "toTable": "customer_metrics",
+            "toColumn": "customer_segment",
+            "type": "many-to-one"
+        },
+        {
+            "fromTable": "insurance_data",
+            "fromColumn": "region",
+            "toTable": "region_metrics",
+            "toColumn": "region",
+            "type": "many-to-one"
+        }
+    ],
+    "dataTypes": {
+        "insurance_data": {
+            "customer_id": "text",
+            "age": "whole number",
+            "policy_date": "date",
+            "annual_premium": "decimal number",
+            "claim_amount": "decimal number",
+            "fraud_reported": "whole number",
+            "customer_segment": "text",
+            "policy_type": "text",
+            "region": "text",
+            "payment_method": "text",
+            "policy_status": "text"
+        },
+        "time_metrics": {
+            "date": "date",
+            "monthly_premium": "decimal number",
+            "monthly_claims": "decimal number",
+            "monthly_fraud_cases": "whole number",
+            "new_policies": "whole number"
+        }
+    }
+} 

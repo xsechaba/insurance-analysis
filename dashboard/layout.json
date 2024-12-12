@@ -1,0 +1,305 @@
+{
+    "name": "Insurance Analytics Dashboard",
+    "version": "1.0",
+    "pages": [
+        {
+            "name": "Executive Summary",
+            "displayName": "Executive Summary",
+            "sections": [
+                {
+                    "name": "kpi_section",
+                    "displayName": "Key Performance Indicators",
+                    "visualType": "card",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 100
+                    },
+                    "items": [
+                        {
+                            "measure": "Total Premium",
+                            "width": 200
+                        },
+                        {
+                            "measure": "Total Claims",
+                            "width": 200
+                        },
+                        {
+                            "measure": "Overall Loss Ratio",
+                            "width": 200
+                        },
+                        {
+                            "measure": "Fraud Rate",
+                            "width": 200
+                        }
+                    ]
+                },
+                {
+                    "name": "trend_section",
+                    "displayName": "Performance Trends",
+                    "position": {
+                        "x": 0,
+                        "y": 120,
+                        "width": 800,
+                        "height": 400
+                    },
+                    "visuals": [
+                        {
+                            "name": "premium_claims_trend",
+                            "visualType": "lineChart",
+                            "width": 800,
+                            "height": 400,
+                            "title": "Premium vs Claims Trend"
+                        }
+                    ]
+                },
+                {
+                    "name": "segment_section",
+                    "displayName": "Customer Segments",
+                    "position": {
+                        "x": 820,
+                        "y": 120,
+                        "width": 380,
+                        "height": 400
+                    },
+                    "visuals": [
+                        {
+                            "name": "segment_distribution",
+                            "visualType": "donutChart",
+                            "width": 380,
+                            "height": 400,
+                            "title": "Customer Segment Distribution"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Customer Analysis",
+            "displayName": "Customer Analysis",
+            "sections": [
+                {
+                    "name": "customer_metrics",
+                    "displayName": "Customer Metrics",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 100
+                    },
+                    "visuals": [
+                        {
+                            "name": "customer_count",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "Total Customers"
+                        },
+                        {
+                            "name": "avg_premium",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "Average Premium"
+                        },
+                        {
+                            "name": "retention_rate",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "Retention Rate"
+                        }
+                    ]
+                },
+                {
+                    "name": "customer_details",
+                    "displayName": "Customer Details",
+                    "position": {
+                        "x": 0,
+                        "y": 120,
+                        "width": 1200,
+                        "height": 400
+                    },
+                    "visuals": [
+                        {
+                            "name": "age_distribution",
+                            "visualType": "histogram",
+                            "width": 400,
+                            "title": "Age Distribution"
+                        },
+                        {
+                            "name": "policy_distribution",
+                            "visualType": "barChart",
+                            "width": 400,
+                            "title": "Policy Type Distribution"
+                        },
+                        {
+                            "name": "payment_method",
+                            "visualType": "donutChart",
+                            "width": 400,
+                            "title": "Payment Method Distribution"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Risk Analysis",
+            "displayName": "Risk Analysis",
+            "sections": [
+                {
+                    "name": "risk_metrics",
+                    "displayName": "Risk Metrics",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 100
+                    },
+                    "visuals": [
+                        {
+                            "name": "fraud_cases",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "Fraud Cases"
+                        },
+                        {
+                            "name": "high_risk_customers",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "High Risk Customers"
+                        },
+                        {
+                            "name": "fraud_amount",
+                            "visualType": "card",
+                            "width": 200,
+                            "title": "Fraud Amount"
+                        }
+                    ]
+                },
+                {
+                    "name": "risk_analysis",
+                    "displayName": "Risk Analysis",
+                    "position": {
+                        "x": 0,
+                        "y": 120,
+                        "width": 1200,
+                        "height": 400
+                    },
+                    "visuals": [
+                        {
+                            "name": "risk_matrix",
+                            "visualType": "scatterChart",
+                            "width": 600,
+                            "title": "Risk Matrix"
+                        },
+                        {
+                            "name": "fraud_patterns",
+                            "visualType": "heatMap",
+                            "width": 600,
+                            "title": "Fraud Patterns"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Regional Analysis",
+            "displayName": "Regional Analysis",
+            "sections": [
+                {
+                    "name": "region_metrics",
+                    "displayName": "Regional Metrics",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 1200,
+                        "height": 100
+                    },
+                    "visuals": [
+                        {
+                            "name": "region_premium",
+                            "visualType": "map",
+                            "width": 600,
+                            "title": "Premium by Region"
+                        },
+                        {
+                            "name": "region_claims",
+                            "visualType": "map",
+                            "width": 600,
+                            "title": "Claims by Region"
+                        }
+                    ]
+                },
+                {
+                    "name": "region_details",
+                    "displayName": "Regional Details",
+                    "position": {
+                        "x": 0,
+                        "y": 120,
+                        "width": 1200,
+                        "height": 400
+                    },
+                    "visuals": [
+                        {
+                            "name": "region_performance",
+                            "visualType": "barChart",
+                            "width": 600,
+                            "title": "Regional Performance"
+                        },
+                        {
+                            "name": "region_customers",
+                            "visualType": "barChart",
+                            "width": 600,
+                            "title": "Customers by Region"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "filters": {
+        "global": [
+            {
+                "name": "date_range",
+                "displayName": "Date Range",
+                "type": "dateRange",
+                "field": "policy_date"
+            },
+            {
+                "name": "customer_segment",
+                "displayName": "Customer Segment",
+                "type": "multiSelect",
+                "field": "customer_segment"
+            },
+            {
+                "name": "region",
+                "displayName": "Region",
+                "type": "multiSelect",
+                "field": "region"
+            }
+        ],
+        "page": {
+            "Customer Analysis": [
+                {
+                    "name": "policy_type",
+                    "displayName": "Policy Type",
+                    "type": "multiSelect",
+                    "field": "policy_type"
+                },
+                {
+                    "name": "payment_method",
+                    "displayName": "Payment Method",
+                    "type": "multiSelect",
+                    "field": "payment_method"
+                }
+            ],
+            "Risk Analysis": [
+                {
+                    "name": "risk_level",
+                    "displayName": "Risk Level",
+                    "type": "multiSelect",
+                    "field": "risk_score"
+                }
+            ]
+        }
+    }
+} 

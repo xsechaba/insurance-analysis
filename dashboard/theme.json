@@ -1,0 +1,126 @@
+{
+    "name": "Insurance Analytics Theme",
+    "dataColors": [
+        "#003366",
+        "#0066CC",
+        "#FF9900",
+        "#CC0000",
+        "#006600",
+        "#9933CC",
+        "#FF6600",
+        "#666666"
+    ],
+    "background": "#FFFFFF",
+    "foreground": "#252525",
+    "tableAccent": "#003366",
+    "visualStyles": {
+        "*": {
+            "*": {
+                "*": [{
+                    "fontFamily": "Segoe UI",
+                    "fontSize": 12,
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "background": {"solid": {"color": "#FFFFFF"}}
+                }]
+            }
+        },
+        "page": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#F5F5F5"}},
+                    "outspace": {"solid": {"color": "#FFFFFF"}}
+                }]
+            }
+        },
+        "card": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "titleFontSize": 14,
+                    "valueFontSize": 24
+                }]
+            }
+        },
+        "clusteredColumnChart": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "gridLines": "dotted",
+                    "gridLinesColor": {"solid": {"color": "#E6E6E6"}}
+                }]
+            }
+        },
+        "lineChart": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "gridLines": "dotted",
+                    "gridLinesColor": {"solid": {"color": "#E6E6E6"}},
+                    "lineStyle": "solid"
+                }]
+            }
+        },
+        "pieChart": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "labels": "inside"
+                }]
+            }
+        },
+        "map": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "bubbleSize": 10
+                }]
+            }
+        },
+        "slicer": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "headerFontSize": 12,
+                    "itemFontSize": 10
+                }]
+            }
+        },
+        "gauge": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "arcAngle": 180,
+                    "arcThickness": 0.2
+                }]
+            }
+        },
+        "matrix": {
+            "*": {
+                "*": [{
+                    "background": {"solid": {"color": "#FFFFFF"}},
+                    "border": true,
+                    "borderColor": {"solid": {"color": "#E6E6E6"}},
+                    "gridLines": "solid",
+                    "gridLinesColor": {"solid": {"color": "#E6E6E6"}},
+                    "totals": "show",
+                    "rowSubtotals": "show"
+                }]
+            }
+        }
+    }
+} 

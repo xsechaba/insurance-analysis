@@ -1,0 +1,233 @@
+{
+    "name": "Insurance Analytics Dashboard Template",
+    "version": "1.0",
+    "dataModel": {
+        "tables": [
+            {
+                "name": "insurance_data",
+                "source": {
+                    "type": "csv",
+                    "path": "../data/processed/insurance_data.csv"
+                },
+                "columns": [
+                    {
+                        "name": "customer_id",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "age",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "policy_date",
+                        "dataType": "datetime"
+                    },
+                    {
+                        "name": "annual_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "claim_amount",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "fraud_reported",
+                        "dataType": "boolean"
+                    },
+                    {
+                        "name": "customer_segment",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "policy_type",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "region",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "payment_method",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "policy_status",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "customer_tenure",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "previous_claims",
+                        "dataType": "int64"
+                    }
+                ]
+            },
+            {
+                "name": "time_metrics",
+                "source": {
+                    "type": "csv",
+                    "path": "../data/processed/time_metrics.csv"
+                },
+                "columns": [
+                    {
+                        "name": "date",
+                        "dataType": "datetime"
+                    },
+                    {
+                        "name": "monthly_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "monthly_claims",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "monthly_fraud_cases",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "new_policies",
+                        "dataType": "int64"
+                    }
+                ]
+            },
+            {
+                "name": "customer_metrics",
+                "source": {
+                    "type": "csv",
+                    "path": "../data/processed/customer_metrics.csv"
+                },
+                "columns": [
+                    {
+                        "name": "customer_segment",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "avg_age",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "min_age",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "max_age",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "customer_count",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "avg_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "total_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "avg_claim",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "total_claims",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "fraud_rate",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "avg_tenure",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "total_previous_claims",
+                        "dataType": "int64"
+                    }
+                ]
+            },
+            {
+                "name": "region_metrics",
+                "source": {
+                    "type": "csv",
+                    "path": "../data/processed/region_metrics.csv"
+                },
+                "columns": [
+                    {
+                        "name": "region",
+                        "dataType": "string"
+                    },
+                    {
+                        "name": "total_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "avg_premium",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "total_claims",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "avg_claim",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "fraud_cases",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "fraud_rate",
+                        "dataType": "decimal"
+                    },
+                    {
+                        "name": "customer_count",
+                        "dataType": "int64"
+                    },
+                    {
+                        "name": "total_previous_claims",
+                        "dataType": "int64"
+                    }
+                ]
+            }
+        ],
+        "relationships": [
+            {
+                "name": "insurance_data_time_metrics",
+                "fromTable": "insurance_data",
+                "fromColumn": "policy_date",
+                "toTable": "time_metrics",
+                "toColumn": "date",
+                "crossFilteringBehavior": "bothDirections"
+            },
+            {
+                "name": "insurance_data_customer_metrics",
+                "fromTable": "insurance_data",
+                "fromColumn": "customer_segment",
+                "toTable": "customer_metrics",
+                "toColumn": "customer_segment",
+                "crossFilteringBehavior": "bothDirections"
+            },
+            {
+                "name": "insurance_data_region_metrics",
+                "fromTable": "insurance_data",
+                "fromColumn": "region",
+                "toTable": "region_metrics",
+                "toColumn": "region",
+                "crossFilteringBehavior": "bothDirections"
+            }
+        ]
+    },
+    "theme": {
+        "name": "Insurance Analytics Theme",
+        "themeJson": "theme.json"
+    },
+    "layout": {
+        "config": "layout.json"
+    }
+} 
